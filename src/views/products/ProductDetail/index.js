@@ -2,20 +2,12 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { lifecycle, compose } from 'recompose'
 import { findById } from '../../../actions/products'
+import BaseHero from '../../../components/BaseHero'
 
 const ProductDetail = ({ product }) => {
   return (
     <Fragment>
-      <section className="hero is-medium is-primary">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">Ahoy Shop!</h1>
-            <h2 className="subtitle">
-              Shopping Website with React and Firebase
-            </h2>
-          </div>
-        </div>
-      </section>
+      <BaseHero />
       <section className="section">
         <div className="container">
           <div className="columns">
