@@ -4,20 +4,12 @@ import { lifecycle, compose } from 'recompose'
 
 import ProductItem from './components/ProductItem'
 import { findAll } from '../../actions/products'
+import BaseHero from '../../components/BaseHero'
 
 const HomePage = ({ products }) => {
   return (
     <div className="home">
-      <section className="hero is-medium is-primary">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">Ahoy Shop!</h1>
-            <h2 className="subtitle">
-              Shopping Website with React and Firebase
-            </h2>
-          </div>
-        </div>
-      </section>
+      <BaseHero />
       <section className="section home-products">
         <div className="container">
           <div className="columns">
