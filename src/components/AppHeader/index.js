@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../logo.svg'
+import { connect } from 'react-redux'
 
-const AppHeader = ({ currentUser, dispatch }) => (
+const AppHeader = ({ isAuthenticated, dispatch }) => (
   <nav className="navbar is-transparent">
     <div className="navbar-brand">
       <a className="navbar-item" href="https://iamnew.dev" target="_blank">
@@ -19,19 +20,44 @@ const AppHeader = ({ currentUser, dispatch }) => (
         <Link to="/" className="navbar-item">
           Home
         </Link>
-        <div className="navbar-item">
-          <p className="control">
-            <Link className="button is-light" to="/login">
-              <span className="icon">
-                <i className="fas fa-user" />
-              </span>
-              <span>Login</span>
+
+        {isAuthenticated ? (
+          <Fragment>
+            <Link to="/products" className="navbar-item">
+              Products
             </Link>
-          </p>
-        </div>
+
+            <div className="navbar-item">
+              <p className="control">
+                <button className="button is-secondary btn-logout">
+                  <span className="icon">
+                    <i className="fas fa-user" />
+                  </span>
+                  <span>Logout</span>
+                </button>
+              </p>
+            </div>
+          </Fragment>
+        ) : (
+          <div className="navbar-item">
+            <p className="control">
+              <Link className="button is-light" to="/login">
+                <span className="icon">
+                  <i className="fas fa-user" />
+                </span>
+                <span>Login</span>
+              </Link>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   </nav>
 )
 
-export default AppHeader
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser,
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(AppHeader)
