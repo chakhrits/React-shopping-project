@@ -45,8 +45,9 @@ const HomePage = ({ products }) => {
 }
 
 const withLifeCycle = lifecycle({
-  componentDidMountI() {
+  componentDidMount() {
     const { dispatch } = this.props
+
     dispatch(findAll())
   }
 })
