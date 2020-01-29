@@ -4,6 +4,25 @@ import { createActionSet } from '../../helpers'
 const productRef = firebase.db.collection('products')
 
 export const FETCH_PRODUCTS = createActionSet('FETCH_PRODUCTS')
+export const FETCH_PRODUCT_DETAIL = createActionSet('FETCH_PRODUCT_DETAIL')
+
+export const findById = id => async dispatch => {
+  dispatch({
+    type: FETCH_PRODUCT_DETAIL.PENDING
+  })
+  try {
+    const product = await productRef.doc(id).get()
+    dispatch({
+      type: FETCH_PRODUCT_DETAIL.SUCCESS,
+      payload: product.data()
+    })
+  } catch (error) {
+    dispatch({
+      type: FETCH_PRODUCT_DETAIL.FAILED,
+      error
+    })
+  }
+}
 
 export const findAll = () => async dispatch => {
   dispatch({
