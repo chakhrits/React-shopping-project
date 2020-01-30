@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import logo from '../../logo.svg'
 import { connect } from 'react-redux'
 
+import { logout } from '../../actions/auth'
+
 const AppHeader = ({ isAuthenticated, dispatch }) => (
   <nav className="navbar is-transparent">
     <div className="navbar-brand">
@@ -29,7 +31,12 @@ const AppHeader = ({ isAuthenticated, dispatch }) => (
 
             <div className="navbar-item">
               <p className="control">
-                <button className="button is-secondary btn-logout">
+                <button
+                  className="button is-secondary btn-logout"
+                  onClick={() => {
+                    dispatch(logout())
+                  }}
+                >
                   <span className="icon">
                     <i className="fas fa-user" />
                   </span>
