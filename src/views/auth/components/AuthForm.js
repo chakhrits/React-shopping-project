@@ -6,9 +6,9 @@ import { compose } from 'recompose'
 
 import ErrorMessage from '../../../components/ErrorMessage'
 
-import './LoginForm.css'
+import './AuthForm.css'
 
-const LoginForm = props => {
+const AuthForm = props => {
   const { title, isLoginForm, error, handleSubmit } = props
 
   return (
@@ -87,4 +87,4 @@ export default compose(
     form: 'auth-form'
   }),
   connect(mapStateToProps)
-)(LoginForm)
+)(AuthForm)
