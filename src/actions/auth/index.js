@@ -25,7 +25,7 @@ export const login = (email, password) => async dispatch => {
       payload: currentUser
     })
 
-    localStorage.setItem('currentUser', currentUser)
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
 
     dispatch(push('/'))
   } catch (error) {
@@ -50,7 +50,7 @@ export const register = (email, password) => async dispatch => {
       payload: currentUser
     })
 
-    localStorage.setItem('currentUser', currentUser)
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
 
     dispatch(push('/'))
   } catch (error) {
@@ -70,6 +70,8 @@ export const logout = () => async dispatch => {
     dispatch({
       type: USER_LOGOUT.SUCCESS
     })
+    localStorage.removeItem('currentUser')
+    dispatch(push('/'))
   } catch (error) {
     dispatch({
       type: USER_LOGOUT.FAILED,
