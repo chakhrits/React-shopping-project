@@ -7,6 +7,7 @@ const { auth } = firebase
 export const USER_SESSION = createActionSet('USER_SESSION')
 export const USER_REGISTER = createActionSet('USER_REGISTER')
 export const USER_LOGOUT = createActionSet('USER_LOGOUT')
+export const FETCH_CURRENT_USER = createActionSet('FETCH_CURRENT_USER')
 
 export const login = (email, password) => async dispatch => {
   dispatch({
@@ -75,4 +76,23 @@ export const logout = () => async dispatch => {
       error
     })
   }
+}
+
+export const fetchCurrentUser = () => dispatch => {
+  dispatch({
+    type: FETCH_CURRENT_USER.PENDING
+  })
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      dispatch({
+        type: FETCH_CURRENT_USER.SUCCESS,
+        payload: user
+      })
+    } else {
+      dispatch({
+        type: FETCH_CURRENT_USER.FAILED
+      })
+    }
+  })
 }

@@ -1,4 +1,9 @@
-import { USER_SESSION, USER_REGISTER, USER_LOGOUT } from '../../actions/auth'
+import {
+  USER_SESSION,
+  USER_REGISTER,
+  USER_LOGOUT,
+  FETCH_CURRENT_USER
+} from '../../actions/auth'
 
 export const initialState = {
   isFetching: false,
@@ -12,12 +17,14 @@ export default (state = initialState, { type, payload, error }) => {
     case USER_SESSION.PENDING:
     case USER_REGISTER.PENDING:
     case USER_LOGOUT.PENDING:
+    case FETCH_CURRENT_USER.PENDING:
       return {
         ...state,
         isFetching: true
       }
     case USER_SESSION.SUCCESS:
     case USER_REGISTER.SUCCESS:
+    case FETCH_CURRENT_USER.SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -27,6 +34,7 @@ export default (state = initialState, { type, payload, error }) => {
     case USER_SESSION.FAILED:
     case USER_REGISTER.FAILED:
     case USER_LOGOUT.SUCCESS:
+    case FETCH_CURRENT_USER.FAILED:
       return {
         ...state,
         isFetching: false,
