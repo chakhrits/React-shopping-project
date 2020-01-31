@@ -8,7 +8,7 @@ class Form extends Component {
     super(props)
 
     this.state = {
-      imageUrl: ''
+      imageUrl: props.coverImage
     }
   }
 
@@ -140,5 +140,6 @@ class Form extends Component {
 }
 
 export default reduxForm({
-  form: 'product-form'
+  form: 'product-form',
+  enableReinitialize: true
 })(Form)

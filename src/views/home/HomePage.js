@@ -5,8 +5,12 @@ import { lifecycle, compose } from 'recompose'
 import ProductItem from './components/ProductItem'
 import { findAll } from '../../actions/products'
 import BaseHero from '../../components/BaseHero'
+import Loading from '../../components/Loading'
 
-const HomePage = ({ products }) => {
+const HomePage = ({ isFetching, products }) => {
+  if (isFetching) {
+    return <Loading />
+  }
   return (
     <div className="home">
       <BaseHero />
