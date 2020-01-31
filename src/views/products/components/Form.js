@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
+import DropzoneUploader from '../../../components/DropzoneUploader'
 
 class Form extends Component {
   constructor(props) {
@@ -9,6 +10,12 @@ class Form extends Component {
     this.state = {
       imageUrl: ''
     }
+  }
+
+  handleUploadFile = value => {
+    this.setState({
+      imageUrl: value.imageUrl
+    })
   }
 
   render() {
@@ -33,6 +40,14 @@ class Form extends Component {
 
             <div className="field">
               <label className="label">Image: </label>
+              <Field
+                name="coverImage"
+                component={DropzoneUploader}
+                onChange={this.handleUploadFile}
+                handleProgress={progress => {
+                  console.log('progress', progress)
+                }}
+              />
               {imageUrl ? (
                 <img
                   src={imageUrl}
