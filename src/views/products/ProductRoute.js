@@ -4,10 +4,12 @@ import { Route, Switch } from 'react-router-dom'
 import ProductDetail from './ProductDetail'
 import ProductList from './ProductList'
 import AuthRoute from '../../components/AuthRoute'
+import CreateProduct from './CreateProduct'
 
 export default () => (
   <Switch>
     <Route exact path="/products" component={AuthRoute(ProductList)} />
+    <Route exact path="/products/new" component={CreateProduct} />
     <Route exact path="/products/:id" component={ProductDetail} />
   </Switch>
 )
