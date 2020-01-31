@@ -3,10 +3,12 @@ import { connectRouter } from 'connected-react-router'
 import { reducer as form } from 'redux-form'
 
 import products from './products'
+import auth from './auth'
 
 export default history =>
   combineReducers({
     router: connectRouter(history),
     form,
-    products
+    products,
+    auth
   })
