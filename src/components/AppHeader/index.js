@@ -8,7 +8,7 @@ import { logout } from '../../actions/auth'
 const AppHeader = ({ isAuthenticated, dispatch }) => (
   <nav className="navbar is-transparent">
     <div className="navbar-brand">
-      <a className="navbar-item" href="https://iamnew.dev" target="_blank">
+      <a className="navbar-item" href="/" target="_self">
         <img src={logo} alt="Iamnew LOGO" width="116" height="64" />
       </a>
       <div className="navbar-burger burger" data-target="navbarWithTransparent">
