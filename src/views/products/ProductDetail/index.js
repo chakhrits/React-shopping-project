@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import { lifecycle, compose } from 'recompose'
 import { findById } from '../../../actions/products'
 import BaseHero from '../../../components/BaseHero'
+import Loading from '../../../components/Loading'
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ isFetching, product }) => {
+  if (isFetching) {
+    return <Loading />
+  }
   return (
     <Fragment>
       <BaseHero />
